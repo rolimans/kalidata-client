@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+    <ion-item-group *ngFor="let data of datas">
+        <ion-item-divider color="light">{{data.nome}}</ion-item-divider>
+        <app-tarefa *ngFor="let tarefa of data.tarefas | async" [tarefa]="tarefa.payload.doc.data()" [id]="tarefa.payload.doc.id" [data]="data"></app-tarefa>
+    </ion-item-group>
+
+    <ion-item *ngIf="datas.length === 0">
+        <p>Nenhuma tarefa a ser exibida...</p>
+    </ion-item>
+    </div>
+
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="add()">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

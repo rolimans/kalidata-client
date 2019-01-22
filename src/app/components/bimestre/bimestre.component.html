@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{bimestre.nome}}</ion-card-title>
+  </ion-card-header>
+  <ion-item>
+    <ion-icon *ngIf="bimestre.isAprovado()" name="checkmark" slot="start"></ion-icon>
+    <ion-icon *ngIf="!bimestre.isAprovado()" name="close" slot="start"></ion-icon>
+    <ion-label>
+      Nota: {{bimestre.nota}}
+    </ion-label>
+    <ion-badge  slot="end" color="primary">{{Math.round(bimestre.nota/bimestre.getValueBimestre()*100)}}%</ion-badge>
+  </ion-item>
+
+  <ion-item mode="md">
+    <ion-icon name="remove-circle-outline" slot="start"></ion-icon>
+    <ion-label>
+      Faltas: {{bimestre.faltas}}
+    </ion-label>
+    <ion-badge *ngIf="faltas_totais!=0" slot="end" color="danger">{{Math.round(bimestre.faltas/faltas_totais*100)}}%</ion-badge>
+    <ion-badge *ngIf="faltas_totais==0" slot="end" color="danger">0%</ion-badge>
+  </ion-item>
+</ion-card>

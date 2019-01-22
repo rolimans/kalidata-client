@@ -1,0 +1,43 @@
+h4{
+  text-align: center;
+}
+
+ion-label.mod{
+  color: var(--color-label);
+}
+
+ion-header ion-icon{
+  margin-top: -10px;
+}
+
+ion-content ion-icon{
+  margin-bottom: -25px;
+}
+
+ion-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+div.center{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check ion-checkbox{
+  margin-right: 9px;
+}
+
+.disclaimer{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 0.5em;
+}
+
+.disclaimer p {
+  font-size: 10px;
+}

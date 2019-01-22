@@ -1,0 +1,1 @@
+"use strict";var cacheVersion=1,currentCache={offline:"offline-cache"+cacheVersion};const offlineUrl="offline.html";self.addEventListener("install",e=>{e.waitUntil(caches.open(currentCache.offline).then(function(e){return e.addAll([offlineUrl])}))}),self.addEventListener("fetch",function(e){e.respondWith(fetch(e.request).catch(function(){return caches.match("/offline.html")}))});

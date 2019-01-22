@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="end">
+          <ion-button href="/about">
+              <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+    <ion-title>Kalidata 2.0</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <div class="center">
+      <div>
+          <ion-item mode="md">
+            <h4>Bem vindo, insira seus dados para prosseguir!</h4>
+          </ion-item>
+        <ion-item>
+          <ion-icon name="contact" slot="start"></ion-icon>
+          <ion-label class="mod" position="floating">Número de Matrícula</ion-label>
+          <ion-input clearInput [(ngModel)]="login" (keyup.enter)="log()"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="key" slot="start"></ion-icon>
+          <ion-label class="mod" position="floating">Senha</ion-label>
+          <ion-input clearInput type="password" (keyup.enter)="log()" [(ngModel)]="senha"></ion-input>
+        </ion-item>
+
+        <ion-item mode="md" class="check">
+          <ion-checkbox [(ngModel)]="remember" slot="start"></ion-checkbox>
+          <ion-label>Lembrar de mim</ion-label>
+        </ion-item>
+
+        <ion-item mode="md">
+          <ion-button (click)="log()" class="center">Entrar</ion-button>
+        </ion-item>
+      </div>
+  </div>
+
+    <div class="disclaimer">
+        <p><a href="https://kalidata.app/docs/terms_and_conditions.pdf" target="_blank">Termos de Uso</a> e <a target="_blank" href="https://kalidata.app/docs/privacy_policy.pdf">Política de Privacidade</a></p>
+    </div>
+
+</ion-content>

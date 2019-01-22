@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="exit()">
+        Pular
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tutorial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager="true" #slides>
+    <ion-slide>
+      <img src="assets/images/tutorial1.png">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/images/tutorial3.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/tutorial4.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/tutorial5.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/images/tutorial2.png">
+    </ion-slide>
+
+    <ion-slide>
+      <div>
+
+        <h1>Fim</h1>
+
+        <br>
+
+        <ion-button (click)="exit()">Começar!</ion-button>
+
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-item style="margin: 0.5em;" mode="md">
+    <ion-button slot="start" (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+    <ion-button slot="end" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></ion-button>
+  </ion-item>
+</ion-content>

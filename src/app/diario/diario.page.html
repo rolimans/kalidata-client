@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>{{this.nome_usuario}}</ion-title>
+  </ion-toolbar>
+    <ion-toolbar id="faltas">
+        <ion-title>Total de faltas: {{this.faltas_totais}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-searchbar [(ngModel)]="pesquisa" placeholder="Pesquisar matéria..." showCancelButton animated ></ion-searchbar>
+
+    <ion-item>
+        <ion-label >Ordenar matéria por...</ion-label>
+        <ion-select mode="md" value="nome" interface="action-sheet"  cancelText="Fechar" [(ngModel)]="order">
+            <ion-select-option value="nome">Nome</ion-select-option>
+            <ion-select-option value="maior">Maior nota</ion-select-option>
+            <ion-select-option value="menor">Menor nota</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Calcular nota com atividades</ion-label>
+        <ion-toggle (ionChange)="toggle_atividades()" [(ngModel)]="atividades" ></ion-toggle>
+    </ion-item>
+
+    <ion-item [attr.disabled]="!atividades" >
+        <ion-label>Calcular com peso</ion-label>
+        <ion-toggle [(ngModel)]="use_peso" ></ion-toggle>
+    </ion-item>
+
+    <ion-item *ngIf="atividades" disabled>
+        <p>*Apenas Estimativas</p>
+    </ion-item>
+
+    <ng-container *ngFor="let materia of this.materias | search:[pesquisa,order, atividades, use_peso]">
+        <app-materia *ngIf="materia !== -1"  [materia] = 'materia' [atividades]="atividades" [use_peso]="use_peso" [faltas_totais] = 'this.faltas_totais'></app-materia>
+        <p *ngIf="materia === -1">Matéria não encontrada...</p>
+    </ng-container>
+    <p *ngIf="this.materias.length === 0">Nenhuma matéria a ser exibida...</p>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button href="/at/page/(tasks:tasks)"><ion-icon name="arrow-back"></ion-icon></ion-button>
+      </ion-buttons>
+    <ion-title>Nova Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-input [(ngModel)]="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Descrição</ion-label>
+        <ion-input [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Matéria</ion-label>
+        <ion-select [(ngModel)]="materia" interface="action-sheet" placeholder="Selecione uma matéria">
+            <ion-select-option *ngFor="let materia_ of materias" value="{{materia_.nome}}">{{materia_.nome}}</ion-select-option>
+            <ion-select-option value="Outros">Outros</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+    <ion-label>Data</ion-label>
+    <ion-datetime min="2018" max="2030" [(ngModel)]="date_selected" display-format="DD/MM/YYYY"></ion-datetime>
+  </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTarefa()">
+        <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

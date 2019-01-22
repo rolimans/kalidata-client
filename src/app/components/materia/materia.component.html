@@ -1,0 +1,81 @@
+<ion-card>
+  <ion-card-header>
+      <ng-container *ngIf="!atividades">
+          <ion-card-subtitle *ngIf="materia.isAprovado()">Aprovado</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="!materia.isAprovado()">Em Progresso</ion-card-subtitle>
+      </ng-container>
+      <ng-container *ngIf="atividades">
+          <ng-container *ngIf="!use_peso">
+              <ion-card-subtitle *ngIf="materia.isAprovadoAtividades()">Aprovado</ion-card-subtitle>
+              <ion-card-subtitle *ngIf="!materia.isAprovadoAtividades()">Em Progresso</ion-card-subtitle>
+          </ng-container>
+
+          <ng-container *ngIf="use_peso">
+              <ion-card-subtitle *ngIf="materia.isAprovadoPeso()">Aprovado</ion-card-subtitle>
+              <ion-card-subtitle *ngIf="!materia.isAprovadoPeso()">Em Progresso</ion-card-subtitle>
+          </ng-container>
+      </ng-container>
+    <ion-card-title>{{materia.nome}}</ion-card-title>
+  </ion-card-header>
+  <ion-item (click)="present()">
+    <ion-icon name="color-wand" slot="start"></ion-icon>
+    <ion-label>{{materia.getUltimaAtividade().nome}}<span *ngIf="materia.getUltimaAtividade() === false">Nenhuma...</span>
+    </ion-label>
+    <ion-badge *ngIf="materia.getUltimaAtividade() !== false" slot="end" color="primary">NEW</ion-badge>
+  </ion-item>
+
+  <ion-item *ngIf="!atividades">
+    <ion-icon *ngIf="materia.isAprovado()" name="checkmark" slot="start"></ion-icon>
+    <ion-icon *ngIf="!materia.isAprovado()" name="close" slot="start"></ion-icon>
+    <ion-label>
+      Nota Total: {{materia.getNotaTotal()}}
+    </ion-label>
+    <ion-badge *ngIf="materia.isAprovado()" slot="end" color="success">{{materia.getNotaFalta()}}</ion-badge>
+    <ion-badge *ngIf="!materia.isAprovado()" slot="end" color="danger">{{materia.getNotaFalta()}}</ion-badge>
+  </ion-item>
+
+  <ion-item *ngIf="atividades">
+    <ng-container *ngIf="!use_peso">
+      <ion-icon *ngIf="materia.isAprovadoAtividades()" name="checkmark" slot="start"></ion-icon>
+      <ion-icon *ngIf="!materia.isAprovadoAtividades()" name="close" slot="start"></ion-icon>
+      <ion-label>
+        Nota Total: {{materia.getNotaTotalAtividades()}}
+      </ion-label>
+      <ion-badge *ngIf="materia.isAprovadoAtividades()" slot="end" color="success">{{materia.getNotaFaltaAtividades()}}</ion-badge>
+      <ion-badge *ngIf="!materia.isAprovadoAtividades()" slot="end" color="danger">{{materia.getNotaFaltaAtividades()}}</ion-badge>
+    </ng-container>
+
+    <ng-container *ngIf="use_peso">
+      <ion-icon *ngIf="materia.isAprovadoPeso()" name="checkmark" slot="start"></ion-icon>
+      <ion-icon *ngIf="!materia.isAprovadoPeso()" name="close" slot="start"></ion-icon>
+      <ion-label>
+        Nota Total: {{materia.getNotaTotalPeso()}}
+      </ion-label>
+      <ion-badge *ngIf="materia.isAprovadoPeso()" slot="end" color="success">{{materia.getNotaFaltaPeso()}}</ion-badge>
+      <ion-badge *ngIf="!materia.isAprovadoPeso()" slot="end" color="danger">{{materia.getNotaFaltaPeso()}}</ion-badge>
+    </ng-container>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="remove-circle-outline" slot="start"></ion-icon>
+    <ion-label>
+      Total de Faltas: {{materia.total_faltas}}
+    </ion-label>
+    <ion-badge *ngIf="faltas_totais!=0" slot="end" color="primary">{{this.Math.round(materia.total_faltas/faltas_totais*100)}}%</ion-badge>
+    <ion-badge *ngIf="faltas_totais==0" slot="end" color="primary">0%</ion-badge>
+  </ion-item>
+
+  <ion-item href="/atividadeDe/{{materia.nome}}" >
+    <ion-icon name="create" slot="start"></ion-icon>
+    <ion-label>{{ materia.getTotalAtividades() }} atividades...</ion-label>
+    <ion-button fill="outline" slot="end" >Ver</ion-button>
+  </ion-item>
+
+  <ion-item href="/boletimDe/{{materia.nome}}">
+    <ion-icon name="calendar" slot="start"></ion-icon>
+    <ion-label>
+      {{ materia.getTotalBimestresNota() }} bimestre(s)...
+    </ion-label>
+    <ion-button fill="outline" slot="end">Ver</ion-button>
+  </ion-item>
+</ion-card>

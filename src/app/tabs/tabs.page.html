@@ -1,0 +1,14 @@
+<ion-tabs>
+  <ion-tab label="Diário" icon="school" href="/at/page/(diary:diary)">
+    <ion-router-outlet name="diary"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab label="Tarefas" icon="create" href="/at/page/(tasks:tasks)">
+    <ion-router-outlet name="tasks"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab label="Sobre" icon="information-circle-outline" href="/at/page/(about:about)">
+    <ion-router-outlet name="about"></ion-router-outlet>
+  </ion-tab>
+  <app-offline-sign></app-offline-sign>
+</ion-tabs>

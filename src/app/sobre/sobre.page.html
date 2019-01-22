@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>Sobre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item mode="md">
+    <ion-label>Dark Mode</ion-label>
+    <ion-toggle (ionChange)="change()" [(ngModel)]="toogle" ></ion-toggle>
+  </ion-item>
+
+  <ion-item class="center" mode="md">
+    <ion-button (click)="loggout()" *ngIf="auth.isLogged()">Loggout</ion-button>
+  </ion-item>
+
+    <ion-item class="center" mode="md">
+        <ion-button href="/tutorial">Tutorial</ion-button>
+    </ion-item>
+
+  <ion-item class="center" mode="md">
+    <ion-button *ngIf="platform.is('cordova')" (click)="video()">Me ajude vendo um vídeo</ion-button>
+  </ion-item>
+    <ion-item class="center" mode="md">
+        <img src="assets/images/avatar.jpg"/>
+    </ion-item>
+    <ion-card color="secondary">
+        <ion-card-content>
+            <ion-card-title>
+                Sobre:
+            </ion-card-title>
+            <p>
+                Aplicativo Web desenvolvido por Eduardo Amaral, aluno do CEFET-MG para visualização mais agradável do conteúdo do Qualidata, atualizado com novas funções como: notificações, visualização offline e novo design, além de diversas melhorias de desempenho.
+                Para desenvolvimeto foi utilizado Ionic 4 juntamente com Angular 6, Firebase além do Apache Cordova, no servidor foi utilizado NodeJS juntamente com o módulo puppeter.
+                <br>
+                Design do ícone por: <a class="link" href="http://mrigor.cf" target="_blank">Igor Martins</a>
+                <br>
+                *Notificações indisponíveis no WebApp para iOS
+            </p>
+        </ion-card-content>
+        <ion-item color="success" (click)="link(taga)" class="clickable">
+            <a href="http://amarall.com" target="_blank" style="display: none" #taga></a>
+            <ion-icon name="code" slot="start"></ion-icon>
+            <ion-label>Site do Desenvolvedor</ion-label>
+        </ion-item>
+    </ion-card>
+</ion-content>

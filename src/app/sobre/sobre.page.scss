@@ -1,0 +1,18 @@
+.center ion-button,img{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.link {
+  color: var(--ion-color-contrast);
+}
+
+img{
+  margin-top: 1em;
+  width: 15em;
+  border-radius: 100%;
+}
+
+.clickable{
+  cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/at/page/(diary:diary)"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="this.bimestres != null">{{nome}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [attr.padding]="bimestres?.length > 0 ? undefined : true">
+  <app-bimestre-materia *ngFor="let bimestre of this.bimestres" [nome]="bimestre.nome" [atividades]="bimestre.getAtividadesRevesed()"></app-bimestre-materia>
+
+    <div *ngIf="bimestres == null">
+        <p>Matéria não encontrada...</p>
+    </div>
+    <div *ngIf="bimestres?.length === 0">
+        <p>Nenhuma atividade a ser exibida...</p>
+    </div>
+</ion-content>

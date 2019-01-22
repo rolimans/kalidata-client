@@ -1,0 +1,8 @@
+{
+  "name": "kalidata",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "pro_id": "99e25837"
+}
